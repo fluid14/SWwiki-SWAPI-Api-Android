@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/filmsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:onClick="filmsBtn_onClick"
+        android:text="Films"
+        app:layout_constraintBaseline_toBaselineOf="@+id/planetsBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/planetsBtn" />
+
+    <Button
+        android:id="@+id/peopleBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="282dp"
+        android:layout_marginEnd="6dp"
+        android:onClick="peopleBtn_onClick"
+        android:text="People"
+        app:layout_constraintEnd_toStartOf="@+id/planetsBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/planetsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="2dp"
+        android:onClick="plantesBtn_onClick"
+        android:text="Planets"
+        app:layout_constraintBottom_toBottomOf="@+id/peopleBtn"
+        app:layout_constraintEnd_toStartOf="@+id/filmsBtn"
+        app:layout_constraintStart_toEndOf="@+id/peopleBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
