@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">StarWarsWiki</string>
+    <string name="sw">StarWars</string>
+    <string name="wiki">Wiki</string>
     <string name="episode"><b>Episode</b></string>
+    <string name="planets">Planets</string>
+    <string name="people">People</string>
+    <string name="peopleList">People List</string>
+    <string name="films">Films</string>
+    <string name="search">Search</string>
+    <string name="searchPeople">Search people</string>
+    <string name="searchPlanets">Search planet</string>
+    <string name="searchFilms">Search film</string>
+
+
 </resources>

@@ -6,13 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="@string/wiki"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <Button
         android:id="@+id/filmsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
+        android:background="@color/colorBtn"
         android:onClick="filmsBtn_onClick"
-        android:text="Films"
+        android:text="@string/films"
         app:layout_constraintBaseline_toBaselineOf="@+id/planetsBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/planetsBtn" />
@@ -23,8 +34,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="282dp"
         android:layout_marginEnd="6dp"
+        android:background="@color/colorBtn"
         android:onClick="peopleBtn_onClick"
-        android:text="People"
+        android:text="@string/people"
+        android:textColorLink="#2980b9"
         app:layout_constraintEnd_toStartOf="@+id/planetsBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,10 +48,36 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="2dp"
+        android:background="@color/colorBtn"
         android:onClick="plantesBtn_onClick"
-        android:text="Planets"
+        android:text="@string/planets"
         app:layout_constraintBottom_toBottomOf="@+id/peopleBtn"
         app:layout_constraintEnd_toStartOf="@+id/filmsBtn"
         app:layout_constraintStart_toEndOf="@+id/peopleBtn" />
+
+    <Button
+        android:id="@+id/poepleListBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="96dp"
+        android:background="@color/colorBtn"
+        android:onClick="poepleListBtn_onClick"
+        android:text="@string/peopleList"
+        app:layout_constraintBottom_toBottomOf="@+id/peopleBtn"
+        app:layout_constraintEnd_toStartOf="@+id/filmsBtn"
+        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintStart_toEndOf="@+id/peopleBtn" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:text="@string/sw"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

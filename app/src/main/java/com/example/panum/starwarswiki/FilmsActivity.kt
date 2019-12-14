@@ -1,7 +1,9 @@
 package com.example.panum.starwarswiki
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -14,9 +16,8 @@ import retrofit2.Call
 import retrofit2.Response
 import com.google.gson.Gson
 import android.text.method.ScrollingMovementMethod
-
-
-
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 
 
 class FilmsActivity : AppCompatActivity() {
@@ -40,7 +41,9 @@ class FilmsActivity : AppCompatActivity() {
 
     fun btnFilmsSearch_onClick(v: View) {
         searchFilms(searchFilmsInput.getText().toString())
+        hideKeyboard()
     }
+
 
     private fun searchFilms(tagword: String) {
         val call = APIClient.get().searchFilms(tagword)
@@ -54,20 +57,29 @@ class FilmsActivity : AppCompatActivity() {
             override fun onResponse(call: Call<FilmQr>, response: Response<FilmQr>) {
 
 
-                Log.d("APIPlug", "Successfully response fetched")
                 searchFilmInput.setText("")
                 val films = response.body()
                 Log.w("films", Gson().toJson(films))
 
                 if (films != null) {
                     if (films.results.size != 0)
-                    searchFilmsTextView.setText(films.results[0].toString())
+                    searchFilmsTextView.setText(Html.fromHtml(films.results[0].toString()))
                     else
-                        searchFilmsTextView.setText("Your request was not found!")
+                        searchFilmsTextView.setText("Not found!")
                 }
 
 
             }
         })
+    }
+    fun AppCompatActivity.hideKeyboard() {
+        val view = this.currentFocus
+        if (view != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+        // else {
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+        // }
     }
 }

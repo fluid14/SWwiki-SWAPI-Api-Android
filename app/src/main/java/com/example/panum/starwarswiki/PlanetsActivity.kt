@@ -1,7 +1,9 @@
 package com.example.panum.starwarswiki
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -12,6 +14,8 @@ import retrofit2.Call
 import retrofit2.Response
 import com.google.gson.Gson
 import android.text.method.ScrollingMovementMethod
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import kotlinx.android.synthetic.main.activity_planets.*
 import models.PlanetQr
 
@@ -37,6 +41,7 @@ class PlanetsActivity : AppCompatActivity() {
 
     fun btnPlanetsSearch_onClick(v: View) {
         searchPlanets(searchPlanetsInput.getText().toString())
+        hideKeyboard()
     }
 
     private fun searchPlanets(tagword: String) {
@@ -50,21 +55,28 @@ class PlanetsActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<PlanetQr>, response: Response<PlanetQr>) {
 
-
-                Log.d("APIPlug", "Successfully response fetched")
                 searchPlanetInput.setText("")
                 val planets = response.body()
                 Log.w("planets", Gson().toJson(planets))
 
                 if (planets != null) {
                     if (planets.results.size != 0)
-                        searchPlanetTextView.setText(planets.results[0].toString())
+                        searchPlanetTextView.setText(Html.fromHtml(planets.results[0].toString()))
                     else
-                        searchPlanetTextView.setText("Your request was not found!")
+                        searchPlanetTextView.setText("Not Found!")
                 }
-
-
             }
         })
+    }
+
+    fun AppCompatActivity.hideKeyboard() {
+        val view = this.currentFocus
+        if (view != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+        // else {
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+        // }
     }
 }

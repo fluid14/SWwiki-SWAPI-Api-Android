@@ -24,7 +24,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:hint="Search film"
+        android:layout_marginBottom="93dp"
+        android:backgroundTint="#ecf0f1"
+        android:cursorVisible="true"
+        android:hint="@string/searchFilms"
+        android:textColor="#ecf0f1"
+        android:textColorHighlight="#ecf0f1"
+        android:textColorHint="#ecf0f1"
+        android:textColorLink="#ecf0f1"
+        app:layout_constraintBottom_toTopOf="@+id/errorView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,22 +43,22 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="33dp"
         android:layout_marginBottom="17dp"
+        android:background="@color/colorBtn"
         android:onClick="btnFilmsSearch_onClick"
-        android:text="Search"
+        android:text="@string/search"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="375dp"
-        android:layout_height="389dp"
+        android:id="@+id/errorView"
+        android:layout_width="385dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="13dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintVertical_bias="0.953">
+        app:layout_constraintTop_toBottomOf="@+id/searchFilmInput">
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -61,7 +69,8 @@
                 android:id="@+id/searchFilmsTextView"
                 android:layout_width="410dp"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:width="350dp"
+                android:maxWidth="350dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
         </HorizontalScrollView>
